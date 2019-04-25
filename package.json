@@ -13,7 +13,9 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "firebase": "^5.10.0",
     "fs": "0.0.1-security",
-    "hbs": "^4.0.3"
+    "hbs": "^4.0.3",
+    "mongodb": "^3.2.3"
   }
 }

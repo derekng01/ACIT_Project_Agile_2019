@@ -10,7 +10,7 @@ const port = process.env.PORT || 8080;
 
 
 // Cookie Code
-// Ignore this line underneath I just copied it from a website LOL
+// Ignore this line underneathb I just copied it from a website LOL
 app.use(session({secret: 'XASDASDA'}));
 var ssn ;
 // Cookie Code  

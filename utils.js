@@ -1,5 +1,4 @@
 const MongoClient = require('mongodb').MongoClient;
-
 var _db = null;
 
 module.exports.getDb = () => {
@@ -15,3 +14,4 @@ module.exports.init = function(callback) {
         console.log('Successfully connected to MongoDB server');
     });
 };
+
