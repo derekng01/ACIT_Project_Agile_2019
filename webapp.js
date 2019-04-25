@@ -126,7 +126,7 @@ app.post('/code-save', (request, response) => {
 const fs = require("fs");
 
 app.post('/test-save', (request, response) => {
-    json = request.body
+    json = request.body;
 
     console.log(json);
     console.log(typeof json);
@@ -135,11 +135,11 @@ app.post('/test-save', (request, response) => {
     fs.writeFile("test.json", json, (err) => {
         if (err) console.log(err);
     })
-})
+});
 
 app.get('/test' , (request, response) => {
     response.render('test.hbs')
-})
+});
 
 
 app.listen(port, () => {
