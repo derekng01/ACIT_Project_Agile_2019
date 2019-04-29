@@ -3,6 +3,7 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const utils = require('./utils.js');
 var session = require('express-session');
+const MongoClient = require('mongodb').MongoClient;
 
 var app = express();
 
@@ -38,8 +39,8 @@ app.get('/', (request, response) => {
         title: "Home Page",
         header: "Welcome to Home!",
     });
-    ssn.comport;
-    ssn.command;
+    // ssn.comport;
+    // ssn.command;
 });
 app.post('/register', function (request, response) {
     var db = utils.getDb();
