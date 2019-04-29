@@ -24,11 +24,11 @@ app.use(bodyParser.urlencoded({
 // Partialsclear
 hbs.registerPartials(__dirname + '/partials');
 
-app.set('views', __dirname + '/Web Page');
+app.set('views', __dirname + '/webpage');
 app.set('view engine', 'hbs');
 
 // Web Pages
-app.use(express.static(__dirname + '/Web Page'));
+app.use(express.static(__dirname + '/webpage'));
 
 // --------------- index page  --------------- //
 app.get('/', (request, response) => {
@@ -70,9 +70,7 @@ app.post('/login', (request, response) => {
                     data: data
                 });
             });
-        
 
-            
         }
     });
 });
@@ -146,7 +144,5 @@ app.listen(port, () => {
     console.log('Server is up and running');
     utils.init()
 });
-
-
 
 
