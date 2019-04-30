@@ -16,6 +16,10 @@
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "hbs": "^4.0.3",
-    "mongodb": "^3.2.3"
+    "mongodb": "^3.2.3",
+    "express-handlebars": "^3.0.2",
+    "messagebird": "^2.4.1",
+    "mockingbird": "^0.3.0",
+    "request": "^2.88.0"
   }
 }
