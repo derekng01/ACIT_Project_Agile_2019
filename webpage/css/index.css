@@ -11,6 +11,7 @@ body {
   max-width: 360px;
   background-color: #1b212c;
   color: white;
+  vertical-align: middle;
 }
 
 .cus-input {

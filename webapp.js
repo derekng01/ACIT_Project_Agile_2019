@@ -64,10 +64,10 @@ app.post('/register', function (request, response) {
 
 
 
+
 // //Set up and configure the Express framework
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
 
 
 //2-step
@@ -90,7 +90,7 @@ app.post('/login', (request, response) => {
                 data = items[0]["phonenumber"];
                 // console.log(data);
 
-                response.render('step1',{
+                response.render('step1.hbs',{
                     number: data
                 })
 
@@ -113,7 +113,7 @@ app.post('/step2', function(req, res) {
         if(err) {
             //Request has failed
             console.log(err);
-            res.render(`step1`,{
+            res.render(`step1.hbs`,{
                 error: err.errors[0].description,
                 // username: user_name
             });
@@ -121,7 +121,7 @@ app.post('/step2', function(req, res) {
         else{
             //Request succeeds
             console.log(response);
-            res.render(`step2`,{
+            res.render(`step2.hbs`,{
                 id: response.id,
                 // username: user_name
             });
@@ -140,7 +140,7 @@ app.post('/step3', function(req, res) {
     messagebird.verify.verify(id, token, function(err, response ) {
         if(err){
             //Verification has failed
-            res.render('step2', {
+            res.render('step2.hbs', {
                 error: err.errors[0].description,
                 id: id
             })
@@ -163,7 +163,7 @@ app.get('/code', (request, response) => {
             success_login: 'Please Login First!'
         })
     } else if(ssn.verification !==1){
-        response.render('step1', {
+        response.render('step1.hbs', {
         })
 
     }else {
