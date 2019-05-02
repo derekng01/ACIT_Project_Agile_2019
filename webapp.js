@@ -3,6 +3,12 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const utils = require('./utils.js');
 var session = require('express-session');
+const MongoClient = require('mongodb').MongoClient;
+
+var exphbs = require('express-handlebars');
+
+//CHANGE THE SECOND BRACKET WITH A NEW API KEY WHEN THINGS BREAK
+var messagebird = require('messagebird')('WVRZNAOc2ES2GMV8wnNNJLZHh');
 
 var app = express();
 
@@ -24,22 +30,28 @@ app.use(bodyParser.urlencoded({
 // Partialsclear
 hbs.registerPartials(__dirname + '/partials');
 
-app.set('views', __dirname + '/Web Page');
+app.set('views', __dirname + '/webpage');
+
+//don't know if we really need this.
 app.set('view engine', 'hbs');
 
 // Web Pages
-app.use(express.static(__dirname + '/Web Page'));
+app.use(express.static(__dirname + '/webpage'));
+
+
 
 // --------------- index page  --------------- //
 app.get('/', (request, response) => {
     ssn=request.session;
     ssn.username = undefined;
+    ssn.verification = 0;
+
     response.render('index.hbs', {
         title: "Home Page",
         header: "Welcome to Home!",
     });
-    ssn.comport;
-    ssn.command;
+    // ssn.comport;
+    // ssn.command;
 });
 app.post('/register', function (request, response) {
     var db = utils.getDb();
@@ -49,6 +61,17 @@ app.post('/register', function (request, response) {
         success_register: 'Thank You for Registering!'
     });
 });
+
+
+
+// //Set up and configure the Express framework
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+
+
+//2-step
+
 app.post('/login', (request, response) => {
     ssn = request.session;
     var db = utils.getDb();
@@ -60,34 +83,90 @@ app.post('/login', (request, response) => {
         } else {
             ssn.username=request.body.username;
             ssn.password=request.body.password;
+            // console.log(ssn.password);
+
             db.collection('users').find({username: ssn.username}).toArray((err, items) => {
                 console.log(items);
-                data = items[0]["data"];
-                response.render('code.hbs', {
-                    title: 'Code Page',
-                    header: "This is about me!",
-                    username: ssn.username,
-                    data: data
-                });
-            });
-        
+                data = items[0]["phonenumber"];
+                // console.log(data);
 
-            
+                response.render('step1',{
+                    number: data
+                })
+
+            });
         }
     });
 });
+
 // --------------- index page  --------------- //
+
+// Handle phone number submission
+app.post('/step2', function(req, res) {
+    var number = req.body.number;
+    // var user_name = req.params.name;
+
+//     //Make request to verify API
+    messagebird.verify.create(number, {
+        template: "Your verification code is %token."
+    },function (err, response) {
+        if(err) {
+            //Request has failed
+            console.log(err);
+            res.render(`step1`,{
+                error: err.errors[0].description,
+                // username: user_name
+            });
+        }
+        else{
+            //Request succeeds
+            console.log(response);
+            res.render(`step2`,{
+                id: response.id,
+                // username: user_name
+            });
+        }
+    })
+});
+
+// //Verify whether the token is correct
+
+app.post('/step3', function(req, res) {
+    var id = req.body.id;
+    var token = req.body.token;
+    // var user_name = req.params.name;
+
+//     //Make request to verify API
+    messagebird.verify.verify(id, token, function(err, response ) {
+        if(err){
+            //Verification has failed
+            res.render('step2', {
+                error: err.errors[0].description,
+                id: id
+            })
+        } else {
+            ssn.verification = 1;
+            //Verification was succe${username}
+            // res.redirect(`/home/${user_name}`);
+            res.redirect('/code')
+        }
+    })
+});
 
 
 
 // --------------- code page  --------------- //
 app.get('/code', (request, response) => {
     var db = utils.getDb();
-    if (ssn.username === undefined) {
+    if (ssn.username === undefined ) {
         response.render('index.hbs', {
             success_login: 'Please Login First!'
         })
-    } else {
+    } else if(ssn.verification !==1){
+        response.render('step1', {
+        })
+
+    }else {
         db.collection('users').find({username: ssn.username}).toArray((err, items) => {
             console.log(items);
             data = items[0]["data"];
@@ -111,8 +190,10 @@ app.post('/code-save', (request, response) => {
     console.log(data);
 
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'data': data}}, (err, item) => {
-        console.log(item)
+
+        console.log(data)
     });
+
     response.render('code.hbs', {
         title: 'Code Page',
         success: "File Has Been Saved",
@@ -126,7 +207,7 @@ app.post('/code-save', (request, response) => {
 const fs = require("fs");
 
 app.post('/test-save', (request, response) => {
-    json = request.body
+    json = request.body;
 
     console.log(json);
     console.log(typeof json);
@@ -135,11 +216,11 @@ app.post('/test-save', (request, response) => {
     fs.writeFile("test.json", json, (err) => {
         if (err) console.log(err);
     })
-})
+});
 
 app.get('/test' , (request, response) => {
     response.render('test.hbs')
-})
+});
 
 
 app.listen(port, () => {

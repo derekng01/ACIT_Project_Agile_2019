@@ -1,4 +1,45 @@
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower|Monoton|Orbitron|Permanent+Marker|Raleway|Teko");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+
+body {
+  background-image: url("../images/mountain.jpg");
+  background-size: cover;
+  padding-top:4.2rem;
+}
+
+.cus-login{
+  max-width: 360px;
+  background-color: #1b212c;
+  color: white;
+}
+
+.cus-input {
+  background-color : whitesmoke;
+  color: black;
+}
+
+.cus-modal{
+  max-width: 400px;
+  background-color: #1b212c;
+  color: white;
+}
+
+.cus-modal-in{
+  background-color: #364052;
+  color: white;
+}
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+
+}
+
+/*
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -7,10 +48,7 @@
   overflow-x: hidden;
 }
 
-body {
-  background-image: url("../images/mountain.jpg");
-  background-size: cover;
-}
+
 
 nav {
   width: 100%;
