@@ -8,7 +8,7 @@ const MongoClient = require('mongodb').MongoClient;
 var exphbs = require('express-handlebars');
 
 //CHANGE THE SECOND BRACKET WITH A NEW API KEY WHEN THINGS BREAK
-var messagebird = require('messagebird')('OhXugIBEZPFiUu0Aq1Dgx6bDv');
+var messagebird = require('messagebird')('zrV3qIatY7rnyaQJN1S8S6tMi');
 
 var app = express();
 
@@ -112,6 +112,7 @@ app.post('/step2', function(req, res) {
     },function (err, response) {
         if(err) {
             //Request has failed
+            console.log(err);
             res.render(`step1.hbs`,{
                 error: err.errors[0].description,
                 // username: user_name
@@ -130,24 +131,33 @@ app.post('/step2', function(req, res) {
 
 // //Verify whether the token is correct
 
-app.post('/step3', function(req) {
+app.post('/step3', function(req, res) {
     var id = req.body.id;
     var token = req.body.token;
     // var user_name = req.params.name;
+
 //     //Make request to verify API
-    messagebird.verify.verify(id, token, function(err, res ) {
-        if(err){
+    messagebird.verify.verify(id, token, function(err, response ) {
+        console.log(response);
+        if((err)) {
             //Verification has failed
-            res.render('step2.hbs', {
-                //error: err.errors[0].description,
+            res.render('step1.hbs', {
+                error: err.errors[0].description,
                 id: id
             })
-        } else {
+        }
+        else if(token===''){
+            res.render('step1.hbs',{
+                number: data
+            })
+        }
+        else {
             ssn.verification = 1;
             //Verification was succe${username}
             // res.redirect(`/home/${user_name}`);
             res.redirect('/code')
         }
+
     })
 });
 
@@ -229,3 +239,4 @@ app.listen(port, () => {
 
 
 
+module.exports = app;
