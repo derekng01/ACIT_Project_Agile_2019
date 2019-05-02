@@ -8,7 +8,7 @@ const MongoClient = require('mongodb').MongoClient;
 var exphbs = require('express-handlebars');
 
 //CHANGE THE SECOND BRACKET WITH A NEW API KEY WHEN THINGS BREAK
-var messagebird = require('messagebird')('   INPUT CODE HERE  ');
+var messagebird = require('messagebird')('OhXugIBEZPFiUu0Aq1Dgx6bDv');
 
 var app = express();
 
@@ -64,10 +64,10 @@ app.post('/register', function (request, response) {
 
 
 
+
 // //Set up and configure the Express framework
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
 
 
 //2-step
@@ -90,7 +90,7 @@ app.post('/login', (request, response) => {
                 data = items[0]["phonenumber"];
                 // console.log(data);
 
-                response.render('step1',{
+                response.render('step1.hbs',{
                     number: data
                 })
 
@@ -112,8 +112,7 @@ app.post('/step2', function(req, res) {
     },function (err, response) {
         if(err) {
             //Request has failed
-            console.log(err);
-            res.render(`step1`,{
+            res.render(`step1.hbs`,{
                 error: err.errors[0].description,
                 // username: user_name
             });
@@ -121,7 +120,7 @@ app.post('/step2', function(req, res) {
         else{
             //Request succeeds
             console.log(response);
-            res.render(`step2`,{
+            res.render(`step2.hbs`,{
                 id: response.id,
                 // username: user_name
             });
@@ -131,29 +130,23 @@ app.post('/step2', function(req, res) {
 
 // //Verify whether the token is correct
 
-app.post('/step3', function(req, res) {
+app.post('/step3', function(req) {
     var id = req.body.id;
     var token = req.body.token;
     // var user_name = req.params.name;
-
 //     //Make request to verify API
-    messagebird.verify.verify(id, token, function(err, response ) {
+    messagebird.verify.verify(id, token, function(err, res ) {
         if(err){
             //Verification has failed
-            res.render('step2', {
-                error: err.errors[0].description,
+            res.render('step2.hbs', {
+                //error: err.errors[0].description,
                 id: id
             })
         } else {
-            ssn.verification = 1
+            ssn.verification = 1;
             //Verification was succe${username}
             // res.redirect(`/home/${user_name}`);
-            res.render('code.hbs', {
-                title: 'Code Page',
-                header: "This is about me!",
-                username: ssn.username,
-                data: data
-            });
+            res.redirect('/code')
         }
     })
 });
@@ -168,7 +161,7 @@ app.get('/code', (request, response) => {
             success_login: 'Please Login First!'
         })
     } else if(ssn.verification !==1){
-        response.render('step1', {
+        response.render('step1.hbs', {
         })
 
     }else {
@@ -195,7 +188,8 @@ app.post('/code-save', (request, response) => {
     console.log(data);
 
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'data': data}}, (err, item) => {
-        console.log(item)
+
+        console.log(data)
     });
 
     response.render('code.hbs', {

@@ -7,39 +7,72 @@
     <title>Home Page</title>
 
     <link rel="stylesheet" href="css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    {{> nav}}
-
-    <main>
-        <section>
-            <p>Welcome Back!</p>
-
-            <form method="POST" action="/login">
-                <input type="text" name="username" placeholder="Username">
-                <input type="text" name="password" placeholder="Password">
-                <input type="submit" value="Submit">
-            </form>
-
-            <p>{{success_login}}</p>
-        </section>
-        <section>
-            <p>Register</p>
-                <form method="POST" action="/register">
-                    <input type="text" name="username" placeholder="Username" required>
-                    <input type="text" name="email" placeholder="Email" required>
-                    <input type="text" name="password" placeholder="Password" required>
-                    <input type="text" name="phone" placeholder="Phone" required>
-
-
-                    <input type="submit" value="Submit">
-                </form>
-            <p>{{success_register}}</p>
-        </section>
-    </main>
-
+    <div class="container justify-content-center text-center">
+        <div class="card col-md-5 mx-auto cus-login">
+            <div class="card-body align-middle">
+                <img src="./images/logo.png" class="mx-auto d-block rounded img-fluid" alt="Logo">
+                <p>Welcome Back!</p>
+                <div>
+                    <form method="POST" action="/login">
+                        <div class="form-group">
+                            <input class="form-control-plaintext cus-input" type="text" name="username" placeholder=" Username">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control-plaintext cus-input" type="password" name="password" placeholder=" Password">
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-dark" type="submit" value="Login" style="width: 100%">
+                        </div>
+                    </form>
+                    <p>{{success_login}}</p>
+                </div>
+                <div>
+                    <button type="button" id="MybtnPreventHTML" class="btn btn-dark" data-target="#MymodalPreventHTML" data-toggle="modal" data-backdrop="static" data-keyboard="false" style="width: 100%">Register</button>
+                    <!-- .modal -->
+                    <div class="modal fade" id="MymodalPreventHTML">
+                        <div class="modal-dialog">
+                            <div class="modal-content cus-modal">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Create Account</h4>
+                                    <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <section>
+                                        <form method="POST" action="/register">
+                                            <div class="form-group">
+                                                <input class="form-control-plaintext cus-modal-in" type="text" name="username" placeholder=" Username" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control-plaintext cus-modal-in" type="text" name="email" placeholder=" Email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control-plaintext cus-modal-in" type="password" name="password" placeholder=" Password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control-plaintext cus-modal-in" type="text" name="phone" placeholder=" Phone" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="btn btn-secondary" type="submit" value="Submit" style="width: 100%">
+                                            </div>
+                                        </form>
+                                        <p>{{success_register}}</p>
+                                    </section>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 100%">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {{> footer}}
-
 </body>
 <script src="js/index.js"></script>
 </html>
