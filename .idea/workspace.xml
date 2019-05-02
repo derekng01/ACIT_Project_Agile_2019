@@ -4,12 +4,6 @@
     <list default="true" id="7ac802b9-5480-40b1-ac9c-408f5cf7dc56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpage/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/webpage/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpage/index.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/webpage/index.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpage/layouts/main.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/webpage/layouts/main.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpage/step1.handlebars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpage/step2.handlebars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpage/step3.handlebars" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webapp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+            <state relative-caret-position="289">
+              <caret line="151" column="14" lean-forward="true" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -37,10 +31,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="89">
               <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
-              <folding>
-                <element signature="n#style#0;n#input#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#4;n#form#0;n#section#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -48,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpage/step1.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="238">
               <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
             </state>
           </provider>
@@ -57,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpage/step2.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+            <state relative-caret-position="272">
+              <caret line="26" column="62" lean-forward="true" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
               <folding>
                 <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -78,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpage/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+            <state relative-caret-position="289">
+              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -99,6 +89,7 @@
       <find>collection</find>
       <find>step2</find>
       <find>req</find>
+      <find>here</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,18 +100,18 @@
       <list>
         <option value="$PROJECT_DIR$/webpage/layouts/main.handlebars" />
         <option value="$PROJECT_DIR$/webpage/step1.handlebars" />
-        <option value="$PROJECT_DIR$/webapp.js" />
         <option value="$PROJECT_DIR$/webpage/index.hbs" />
         <option value="$PROJECT_DIR$/webpage/css/index.css" />
         <option value="$PROJECT_DIR$/webpage/step2.hbs" />
         <option value="$PROJECT_DIR$/webpage/step1.hbs" />
+        <option value="$PROJECT_DIR$/webapp.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="227" />
-    <option name="y" value="8" />
-    <option name="width" value="1719" />
+    <option name="x" value="226" />
+    <option name="y" value="7" />
+    <option name="width" value="1720" />
     <option name="height" value="1045" />
   </component>
   <component name="ProjectView">
@@ -218,22 +209,23 @@
       <updated>1556568489760</updated>
       <workItem from="1556568490990" duration="462000" />
       <workItem from="1556759773503" duration="5561000" />
+      <workItem from="1556832153731" duration="4451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6023000" />
+    <option name="totallyTimeSpent" value="10474000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.24983476" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.5013405" side_tool="true" visible="true" weight="0.24983476" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49618322" visible="true" weight="0.24983476" />
+      <window_info id="Structure" order="1" sideWeight="0.5038168" side_tool="true" visible="true" weight="0.24983476" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30428955" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29758713" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -264,26 +256,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/layouts/partials/footer.hbs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/layouts/main.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/step2.handlebars">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/step1.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/layouts/partials/footer.hbs" />
+    <entry file="file://$PROJECT_DIR$/webpage/step2.handlebars" />
+    <entry file="file://$PROJECT_DIR$/webpage/step1.handlebars" />
     <entry file="file://$USER_HOME$/Desktop/webapp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -293,18 +268,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webpage/step1.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="238">
           <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/step2.hbs">
+    <entry file="file://$PROJECT_DIR$/webpage/layouts/main.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -312,24 +291,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89">
           <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#4;n#form#0;n#section#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/css/index.css">
+    <entry file="file://$PROJECT_DIR$/webpage/step2.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        <state relative-caret-position="272">
+          <caret line="26" column="62" lean-forward="true" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+          <folding>
+            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+        <state relative-caret-position="289">
+          <caret line="151" column="14" lean-forward="true" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
         </state>
       </provider>
     </entry>

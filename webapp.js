@@ -8,7 +8,7 @@ const MongoClient = require('mongodb').MongoClient;
 var exphbs = require('express-handlebars');
 
 //CHANGE THE SECOND BRACKET WITH A NEW API KEY WHEN THINGS BREAK
-var messagebird = require('messagebird')('WVRZNAOc2ES2GMV8wnNNJLZHh');
+var messagebird = require('messagebird')('zrV3qIatY7rnyaQJN1S8S6tMi');
 
 var app = express();
 
@@ -138,18 +138,26 @@ app.post('/step3', function(req, res) {
 
 //     //Make request to verify API
     messagebird.verify.verify(id, token, function(err, response ) {
-        if(err){
+        console.log(response);
+        if((err)) {
             //Verification has failed
-            res.render('step2.hbs', {
+            res.render('step1.hbs', {
                 error: err.errors[0].description,
                 id: id
             })
-        } else {
+        }
+        else if(token===''){
+            res.render('step1.hbs',{
+                number: data
+            })
+        }
+        else {
             ssn.verification = 1;
             //Verification was succe${username}
             // res.redirect(`/home/${user_name}`);
             res.redirect('/code')
         }
+
     })
 });
 
