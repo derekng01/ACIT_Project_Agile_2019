@@ -8,7 +8,7 @@ const MongoClient = require('mongodb').MongoClient;
 var exphbs = require('express-handlebars');
 
 //CHANGE THE SECOND BRACKET WITH A NEW API KEY WHEN THINGS BREAK
-var messagebird = require('messagebird')('zrV3qIatY7rnyaQJN1S8S6tMi');
+var messagebird = require('messagebird')('z98qoGoJTwAXOqgr3dHhVbaEM');
 
 var app = express();
 
@@ -185,6 +185,7 @@ app.get('/code', (request, response) => {
 
 app.post('/code-save', (request, response) => {
     var db = utils.getDb();
+
 
     username = request.body.username;
     console.log(username);

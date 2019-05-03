@@ -28,17 +28,12 @@ describe('Test login redirects to Step 2', function () {
             .type('form')
             .send({username: 'test', password: 'test'})
             .then(function (res) {
-                // console.log(res)
-
                 var str = res.text;
                 var patt= /Please enter your phone number in international format/i;
                 var resu = patt.test(str);
 
                 assert.equal(resu,true);
                 done()
-                //console.log(res.text)
-              // expect(res).to.have.status(200);
-              //   done()
             })
 
     })

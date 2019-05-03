@@ -1,11 +1,5 @@
-const request = require('supertest');
 const assert = require('chai').assert;
 const expect = require('chai').expect;
-
-const output = require('../webpage/js/code').display_output;
-const input = require('../webpage/js/code').get_input;
-
-
 var chai = require('chai'), chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
@@ -37,7 +31,7 @@ describe('GET /12345', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(404);
                 done()
-            })
+            });
     });
 });
 
@@ -50,7 +44,8 @@ describe('GET /', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done()
-            })
+
+            });
     });
 });
 
@@ -62,6 +57,7 @@ describe('GET /code', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done()
+
             })
     });
 });
@@ -74,7 +70,8 @@ describe('POST /code-save', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done()
-            })
+
+            });
     });
 });
 
@@ -97,8 +94,9 @@ describe('Test account creation', function () {
                 //console.log(res.text)
                 // expect(res).to.have.status(200);
                 //   done()
+                done()
+
             });
-        done()
     })
 })
 
