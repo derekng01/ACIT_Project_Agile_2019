@@ -1,15 +1,13 @@
 const assert = require('chai').assert;
-const request = require('supertest');
-const expect = require('chai').expect;
+// const request = require('supertest');
+// const expect = require('chai').expect;
+// var supertest = require('supertest');
 var chai = require('chai'), chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const app = require('../webapp');
 var messagebird = require('messagebird')('OhXugIBEZPFiUu0Aq1Dgx6bDv');
-var supertest = require('supertest');
 
-
-var agent = supertest.agent(app);
-
+//var agent = supertest.agent(app);
 
 //-------------------Testing Deliverable 1-------------------------//
 
@@ -28,15 +26,23 @@ describe('Test login redirects to Step 2', function () {
         agent
             .post('/login')
             .type('form')
-            .send({username: 'qqq', password: 'qqq'})
+            .send({username: 'test', password: 'test'})
             .then(function (res) {
-                //console.log(res.text)
-              expect(res).to.have.status(200);
+                // console.log(res)
+
+                var str = res.text;
+                var patt= /Please enter your phone number in international format/i;
+                var resu = patt.test(str);
+
+                assert.equal(resu,true);
                 done()
-            });
+                //console.log(res.text)
+              // expect(res).to.have.status(200);
+              //   done()
+            })
+
     })
 })
-
 
 //Testing if Step 2 File doesn't loads after an unsuccessful login
 var agent = chai.request.agent(app);

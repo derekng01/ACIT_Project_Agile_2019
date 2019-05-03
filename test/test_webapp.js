@@ -2,6 +2,10 @@ const request = require('supertest');
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
+const output = require('../webpage/js/code').display_output;
+const input = require('../webpage/js/code').get_input;
+
+
 var chai = require('chai'), chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
@@ -36,6 +40,7 @@ describe('GET /12345', function () {
             })
     });
 });
+
 
 //Testing Home Page
 describe('GET /', function () {
@@ -72,3 +77,28 @@ describe('POST /code-save', function () {
             })
     });
 });
+
+var agent = chai.request.agent(app);
+
+describe('Test account creation', function () {
+    it('Should create account', function (done) {
+        agent
+            .post('/register')
+            .type('form')
+            .send({username: 'test',email: 'test@test', password: 'test', phone:'+17786289389'})
+            .then(function (res) {
+                // console.log(res)
+
+                var str = res.text;
+                var patt= /Thank You For Registering!/i;
+                var resu = patt.test(str);
+                assert.equal(resu,true);
+
+                //console.log(res.text)
+                // expect(res).to.have.status(200);
+                //   done()
+            });
+        done()
+    })
+})
+

@@ -19,7 +19,7 @@ const port = process.env.PORT || 8080;
 // Ignore this line underneath I just copied it from a website LOL
 app.use(session({secret: 'XASDASDA'}));
 var ssn ;
-// Cookie Code  
+// Cookie Code
 
 
 app.use(bodyParser.json());
@@ -62,16 +62,11 @@ app.post('/register', function (request, response) {
     });
 });
 
-
-
-
 // //Set up and configure the Express framework
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-
 //2-step
-
 app.post('/login', (request, response) => {
     ssn = request.session;
     var db = utils.getDb();

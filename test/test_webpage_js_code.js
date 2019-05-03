@@ -1,11 +1,16 @@
-const assert = require('chai').assert;
-const app = require('../webpage/js/code').display_code;
-const nock = require('nock');
+const expect = require('chai').expect;
+const output = require('../webpage/js/code').display_output;
+const input = require('../webpage/js/code').get_input;
 
-describe('Code Viewer', function(){
-        it('String input', function(){
-            assert.equal(app,undefined);
-        });
+
+describe('Testing get_input', function(){
+    it('get_input()', function(){
+        expect(input, undefined);
+    });
 });
 
-
+describe('Testing display_out', function(){
+    it('display_output()', function(){
+        expect(output, undefined);
+    });
+});
