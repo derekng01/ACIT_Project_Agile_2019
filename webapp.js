@@ -50,12 +50,13 @@ app.get('/', (request, response) => {
         title: "Home Page",
         header: "Welcome to Home!",
     });
-    // ssn.comport;
-    // ssn.command;
+     ssn.comport;
+     ssn.command;
 });
 app.post('/register', function (request, response) {
     var db = utils.getDb();
     request.body["data"] = "";
+    request.body["cssdata"] = "";
     db.collection('users').insertOne(request.body);
     response.render('index.hbs', {
         success_register: 'Thank You for Registering!'
@@ -82,7 +83,7 @@ app.post('/login', (request, response) => {
 
             db.collection('users').find({username: ssn.username}).toArray((err, items) => {
                 console.log(items);
-                data = items[0]["phonenumber"];
+                data = items[0]["phone"];
                 // console.log(data);
 
                 response.render('step1.hbs',{
@@ -173,11 +174,14 @@ app.get('/code', (request, response) => {
         db.collection('users').find({username: ssn.username}).toArray((err, items) => {
             console.log(items);
             data = items[0]["data"];
+            cssdata = items[0]["cssdata"];
             response.render('code.hbs', {
                 title: 'Code Page',
                 header: "This is about me!",
                 username: ssn.username,
-                data: data
+                data: data,
+                cssdata: cssdata
+
             });
         });
     }
@@ -191,11 +195,15 @@ app.post('/code-save', (request, response) => {
     console.log(username);
 
     data = request.body.data;
+    cssdata = request.body.cssdata;
+
     console.log(data);
 
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'data': data}}, (err, item) => {
-
-        console.log(data)
+        //console.log(data)
+    });
+    db.collection('users').findOneAndUpdate({username: username}, {'$set': {'cssdata': cssdata}}, (err, item) => {
+        //console.log(item)
     });
 
     response.render('code.hbs', {
@@ -203,7 +211,8 @@ app.post('/code-save', (request, response) => {
         success: "File Has Been Saved",
         header: "This is about me!",
         username: ssn.username,
-        data: data
+        data: data,
+        cssdata:cssdata
     });
 });
 
@@ -213,8 +222,8 @@ const fs = require("fs");
 app.post('/test-save', (request, response) => {
     json = request.body;
 
-    console.log(json);
-    console.log(typeof json);
+    //console.log(json);
+    //console.log(typeof json);
 
     response.render('test.hbs');
     fs.writeFile("test.json", json, (err) => {
