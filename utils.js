@@ -12,6 +12,6 @@ module.exports.init = function(callback) {
             return console.log('Unable to connect to DB')
         }
         _db = client.db('CodeDatabase');
-        console.log('Successfully connected to MongoDB server');
+        //console.log('Successfully connected to MongoDB server');
     });
 };
