@@ -82,7 +82,7 @@ app.post('/login', (request, response) => {
             // console.log(ssn.password);
 
             db.collection('users').find({username: ssn.username}).toArray((err, items) => {
-                console.log(items);
+                //console.log(items);
                 data = items[0]["phone"];
                 // console.log(data);
 
@@ -116,7 +116,7 @@ app.post('/step2', function(req, res) {
         }
         else{
             //Request succeeds
-            console.log(response);
+           // console.log(response);
             res.render(`step2.hbs`,{
                 id: response.id,
                 // username: user_name
@@ -172,7 +172,7 @@ app.get('/code', (request, response) => {
 
     }else {
         db.collection('users').find({username: ssn.username}).toArray((err, items) => {
-            console.log(items);
+            //console.log(items);
             data = items[0]["data"];
             cssdata = items[0]["cssdata"];
             response.render('code.hbs', {
@@ -190,14 +190,13 @@ app.get('/code', (request, response) => {
 app.post('/code-save', (request, response) => {
     var db = utils.getDb();
 
-
     username = request.body.username;
-    console.log(username);
+    //console.log(username);
 
     data = request.body.data;
     cssdata = request.body.cssdata;
 
-    console.log(data);
+    //console.log(data);
 
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'data': data}}, (err, item) => {
         //console.log(data)
@@ -234,7 +233,6 @@ app.post('/test-save', (request, response) => {
 app.get('/test' , (request, response) => {
     response.render('test.hbs')
 });
-
 
 app.listen(port, () => {
     console.log('Server is up and running');

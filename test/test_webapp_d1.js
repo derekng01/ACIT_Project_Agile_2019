@@ -34,10 +34,9 @@ describe('Test login redirects to Step 2', function () {
 
                 assert.equal(resu,true);
                 done()
-            })
-
+            });
     })
-})
+});
 
 //Testing if Step 2 File doesn't loads after an unsuccessful login
 var agent = chai.request.agent(app);
@@ -57,4 +56,4 @@ describe('Test login does not redirect when invalid', function () {
                 done()
             })
     })
-})
+});
