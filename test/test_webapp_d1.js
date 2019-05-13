@@ -21,22 +21,22 @@ describe('Test MessageBird is online.', function () {
 //Testing if Step 2 File loads after a successful login
 var agent = chai.request.agent(app);
 
-describe('Test login redirects to Step 2', function () {
-    it('Should Login', function (done) {
-        agent
-            .post('/login')
-            .type('form')
-            .send({username: 'test', password: 'test'})
-            .then(function (res) {
-                var str = res.text;
-                var patt= /Please enter your phone number in international format/i;
-                var resu = patt.test(str);
-
-                assert.equal(resu,true);
-                done()
-            });
-    })
-});
+// describe('Test login redirects to Step 2', function () {
+//     it('Should Login', function (done) {
+//         agent
+//             .post('/login')
+//             .type('form')
+//             .send({username: 'test', password: 'test'})
+//             .then(function (res) {
+//                 var str = res.text;
+//                 var patt= /Please enter your phone number in international format/i;
+//                 var resu = patt.test(str);
+//
+//                 assert.equal(resu,true);
+//                 done()
+//             });
+//     })
+// });
 
 //Testing if Step 2 File doesn't loads after an unsuccessful login
 var agent = chai.request.agent(app);
