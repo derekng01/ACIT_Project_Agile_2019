@@ -1,4 +1,8 @@
 before_script: chmod 0777 ./node_modules/.bin/mocha
+
+before_script:
+  - sleep 15
+  - mongo mydb_test --eval 'db.createUser({username:"test",email:"test@test",password:"test",phone:"123",data:"",cssdata:""});'
 services: monodb
 language: node_js
 node_js:
