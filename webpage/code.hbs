@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="css/code.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</head>
+<body onload="display_output(get_input(true),true)">
+{{> nav}}
+<div class="row p-3">
+    <!-- First Half -->
+    <div class="col-lg-6 col-sm-12 left">
+        <div class="container-fluid">
+            <form method="POST" action="/code-save" name="deskcode">
+                <div class="container-fluid">
+
+                    <input type="hidden" name="username" id="username" value={{username}} />
+                    <ul id="myTab" class="nav nav-tabs cus-tab nav-justified" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#html">
+                                HTML
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#css">
+                                CSS
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content bg-white container-fluid p-1">
+                        <div class="container-fluid tab-pane active" id="html">
+                            <textarea class="container-fluid cus-tb" type="text" name="data" id="input"
+                                      onkeyup="display_output(get_input(chk_auto()),chk_auto())"
+                                      placeholder="Start HTML Coding Here">{{data}}</textarea>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-dark" onclick="downloadbtn('html', deskcode['data'].value)" value="Download HTML">
+                            </div>
+                        </div>
+                        <div class="container-fluid tab-pane fade" id="css">
+                            <textarea class="container-fluid cus-tb" type="text" name="cssdata" id="input2"
+                                      onkeyup="display_output(get_input(chk_auto()),chk_auto())"
+                                      placeholder="Start CSS Coding Here">{{cssdata}}</textarea>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-dark" onclick="downloadbtn('css', deskcode['cssdata'].value)" value="Download CSS">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center justify-content-center">
+                        <span class="rend-text">Auto Render:</span>
+                        <label class="switch">
+                            <input id="autorend" type="checkbox" onclick="chk_auto()" checked>
+                            <span class="slider round"></span>
+                        </label>
+                        <button type="button" class="btn btn-dark" id="manrend"
+                                onclick="display_output(get_input(true),true)" disabled>Manual Render
+                        </button>
+                    </div>
+                    <div class="text-center justify-content-center">
+                        <input class="btn btn-dark" type="submit" value="Save Code">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- First Half -->
+
+    <!-- Second Half -->
+    <div class="col-lg-6 col-sm-12 right p-1">
+        <div class="container">
+            <iframe class="container-fluid cus-if" id="output" scrolling="yes">
+            </iframe>
+        </div>
+    </div>
+    <!-- Second Half -->
+</div>
+{{!-- <p>{{success}}</p> --}}
+{{> footer}}
+</body>
+<script src="js/code.js"></script>
+<script src="js/download.js"></script>
+</html>
