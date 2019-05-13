@@ -7,9 +7,9 @@ module.exports.getDb = () => {
 };
 
 module.exports.init = function(callback) {
-    // MongoClient.connect(dbiuri, (err, client) => {
+    MongoClient.connect(dbiuri, (err, client) => {
 
-        MongoClient.connect('mongodb://localhost:27017', (err, client) => {
+        // MongoClient.connect('mongodb://localhost:27017', (err, client) => {
         if (err) {
             return console.log('Unable to connect to DB')
         }

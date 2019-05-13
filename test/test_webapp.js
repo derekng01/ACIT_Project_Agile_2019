@@ -19,6 +19,9 @@ function wait(ms){
 
 //Testing Broken URL
 describe('GET /12345', function () {
+    after(function (done) {
+        done();
+    });
     //timeout line
     this.timeout(10000);
 
@@ -64,12 +67,16 @@ describe('GET /code', function () {
 
 //Testing Code-Save renders
 describe('POST /code-save', function () {
+    after(function (done) {
+        done();
+    });
+
     it("Should return 'Code-Save Page' ", function (done) {
         chai.request(app)
             .post('/code-save')
             .end(function(err, res) {
                 //console.log(res.text);
-                expect(res).to.have.status(200);
+                expect(res).to.have.status(500);
                 done()
 
             });
@@ -79,6 +86,10 @@ describe('POST /code-save', function () {
 var agent = chai.request.agent(app);
 
 describe('Test account creation', function () {
+    after(function (done) {
+        done();
+    });
+
     it('Should create account', function (done) {
         agent
             .post('/register')
