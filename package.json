@@ -22,6 +22,7 @@
     "hbs": "^4.0.4",
     "jsdom": "^15.0.0",
     "messagebird": "^2.4.1",
+    "mocha": "^6.1.4",
     "mochai": "^0.2.5",
     "mockingbird": "^0.3.0",
     "mongodb": "^3.2.3",
@@ -30,6 +31,3 @@
     "supertest": "^4.0.2"
   }
 }
-
-
-
