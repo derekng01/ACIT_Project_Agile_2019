@@ -75,6 +75,7 @@ describe('POST /code-save', function () {
         chai.request(app)
             .post('/code-save')
             .end(function(err, res) {
+                console.log(res.text)
                 //console.log(res.text);
                 expect(res).to.have.status(500);
                 done()
