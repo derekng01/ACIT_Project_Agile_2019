@@ -39,6 +39,38 @@ describe('GET /12345', function () {
 });
 
 
+var agent = chai.request.agent(app);
+describe('Test account creation fail', function () {
+    after(function (done) {
+        done();
+
+    });
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa")
+    it('Should fail to create account', function (done) {
+        agent
+            .post('/register')
+            .type('form')
+            .send({username: 'test',email: 'test@test', password: 'test', phone:'+17786289389'})
+            .then(function (res){
+
+                assert.equal(typeof(res), object)
+
+                // assert.equal(typeof(res), object)
+                done()
+
+            });
+    })
+})
+
+
+
+
+
+
+
+
+
+
 //Testing Home Page
 describe('GET /', function () {
     it("Should return 'Home Page' ", function (done) {
@@ -75,9 +107,9 @@ describe('POST /code-save', function () {
         chai.request(app)
             .post('/code-save')
             .end(function(err, res) {
-                console.log(res.text)
+                //console.log(res.text)
                 //console.log(res.text);
-                expect(res).to.have.status(500);
+                expect(res).to.have.status(200);
                 done()
 
             });
@@ -86,7 +118,7 @@ describe('POST /code-save', function () {
 
 var agent = chai.request.agent(app);
 
-describe('Test account creation', function () {
+describe('Test account creation ', function () {
     after(function (done) {
         done();
     });

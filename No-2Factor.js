@@ -156,6 +156,12 @@ app.get('/test' , (request, response) => {
     response.render('test.hbs')
 })
 
+app.get("*", (request, response) => {
+    response.status(400);
+    response.render("404.hbs", {
+    });
+})
+
 
 app.listen(port, () => {
     console.log('Server is up and running');
