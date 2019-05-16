@@ -5,7 +5,7 @@
   "main": "webapp.js",
   "scripts": {
     "test": "mocha --exit",
-    "start": "webapp.js"
+    "start": "node webapp.js"
   },
   "author": "",
   "license": "ISC",
