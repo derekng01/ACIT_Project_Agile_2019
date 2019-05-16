@@ -12,7 +12,7 @@ var messagebird = require('messagebird')('z98qoGoJTwAXOqgr3dHhVbaEM');
 
 var app = express();
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
 
 
 // Cookie Code
