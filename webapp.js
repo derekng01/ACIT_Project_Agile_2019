@@ -234,11 +234,7 @@ app.get('/test' , (request, response) => {
     response.render('test.hbs')
 });
 
-app.get("*", (request, response) => {
-    response.status(400);
-    response.render("404.hbs", {
-    });
-})
+
 
 app.get('/logout', (request, response) => {
     javascript:void(0);
