@@ -28,7 +28,7 @@ describe('GET /12345', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -45,7 +45,7 @@ describe('Login Valid', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -61,7 +61,7 @@ describe('Code hbs', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -77,7 +77,7 @@ describe('Code-Save', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -92,7 +92,7 @@ describe('Register Valid', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -107,7 +107,7 @@ describe('Register Invalid', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -122,7 +122,7 @@ describe('Site Breaks with Manual URL', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -137,7 +137,7 @@ describe('Phone number input', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -153,7 +153,7 @@ describe('Testing Downloadbtn HTML', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -169,7 +169,7 @@ describe('Testing Downloadbtn HTML', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -201,7 +201,7 @@ describe('Testing Downloadbtn CSS', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -217,7 +217,7 @@ describe('Testing Downloadbtn CSS', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -233,7 +233,7 @@ describe('Testing Downloadbtn CSS', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -249,7 +249,7 @@ describe('Testing get_input is reachable', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -265,7 +265,7 @@ describe('Testing display_out is reachable', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -281,7 +281,7 @@ describe('Testing HTML Text has text in it', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -297,7 +297,7 @@ describe('Testing CSS Text has text in it', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -313,7 +313,7 @@ describe('Testing the empty iFrame loaded properly', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -329,7 +329,7 @@ describe('Testing the iFrame loaded properly with content', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -345,7 +345,7 @@ describe('Testing Download compiles into a DOM object for browsers', function() 
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -361,7 +361,7 @@ describe('Testing Download compiles into a DOM object for browsers', function() 
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -377,7 +377,7 @@ describe('Test account creation', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -393,7 +393,7 @@ describe('Test Bad account creation', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
