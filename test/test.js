@@ -185,7 +185,7 @@ describe('Testing Downloadbtn HTML', function(){
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
