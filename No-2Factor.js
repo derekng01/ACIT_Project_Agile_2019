@@ -162,6 +162,14 @@ app.get("*", (request, response) => {
     });
 })
 
+app.get('/logout', (request, response) => {
+    javascript:void(0);
+    request.logout();
+    request.session.destroy(() => {
+        response.clearCookie('connect.sid');
+        response.redirect('/');
+    });
+});
 
 app.listen(port, () => {
     console.log('Server is up and running');

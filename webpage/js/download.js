@@ -1,3 +1,11 @@
+function downloadfiles(type,data){
+    if (type ==='html'){
+        download('deskcode.html', downloadbtn(type,data))
+    }else if(type ==='css'){
+        download('deskcode.css',downloadbtn(type,data))
+    }
+}
+
 function downloadbtn(type, data){
     if (type === 'html'){
         var head = "<!DOCTYPE html>\n" +
@@ -13,10 +21,10 @@ function downloadbtn(type, data){
         var end = "\n</body>\n" +
             "</html>";
         var htmldata = head + data + end;
-        download('deskcode.html',htmldata)
+        return(htmldata)
     }
     else if(type === 'css'){
-        download('deskcode.css',data)
+        return(data)
     }
 }
 
@@ -33,3 +41,9 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
+module.exports = {
+    downloadfiles,
+    downloadbtn,
+    download
+    // isPrime
+};

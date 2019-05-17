@@ -14,6 +14,7 @@ var app = express();
 
 const port = process.env.PORT || 8080;
 
+utils.init()
 
 // Cookie Code
 // Ignore this line underneath I just copied it from a website LOL
@@ -45,7 +46,6 @@ app.get('/', (request, response) => {
     ssn=request.session;
     ssn.username = undefined;
     ssn.verification = 0;
-
     response.render('index.hbs', {
         title: "Home Page",
         header: "Welcome to Home!",
@@ -233,6 +233,23 @@ app.post('/test-save', (request, response) => {
 app.get('/test' , (request, response) => {
     response.render('test.hbs')
 });
+
+app.get("*", (request, response) => {
+    response.status(400);
+    response.render("404.hbs", {
+    });
+})
+
+app.get('/logout', (request, response) => {
+    javascript:void(0);
+    request.logout();
+    request.session.destroy(() => {
+        response.clearCookie('connect.sid');
+        response.redirect('/');
+    });
+});
+
+
 
 app.listen(port, () => {
     console.log('Server is up and running');
