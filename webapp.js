@@ -3,23 +3,23 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const utils = require('./utils.js');
 var session = require('express-session');
-const MongoClient = require('mongodb').MongoClient;
-
 var exphbs = require('express-handlebars');
 
-//CHANGE THE SECOND BRACKET WITH A NEW API KEY WHEN THINGS BREAK
+//Insert MessageBird API Key in the bracket    ↓↓↓↓↓ HERE ↓↓↓↓↓
 var messagebird = require('messagebird')('z98qoGoJTwAXOqgr3dHhVbaEM');
+//Insert MessageBird API Key in the bracket    ↑↑↑↑↑ HERE ↑↑↑↑↑
 
 var app = express();
 
-const port = process.env.PORT||8080;
+const port = process.env.PORT || 8080;
 
+utils.init()
 
 // Cookie Code
 // Ignore this line underneath I just copied it from a website LOL
 app.use(session({secret: 'XASDASDA'}));
 var ssn ;
-// Cookie Code;
+// Cookie Code
 
 
 app.use(bodyParser.json());
@@ -42,10 +42,10 @@ app.use(express.static(__dirname + '/webpage'));
 
 // --------------- index page  --------------- //
 app.get('/', (request, response) => {
+
     ssn=request.session;
     ssn.username = undefined;
     ssn.verification = 0;
-
     response.render('index.hbs', {
         title: "Home Page",
         header: "Welcome to Home!",
@@ -57,6 +57,7 @@ app.post('/register', function (request, response) {
     var db = utils.getDb();
     request.body["data"] = "";
     request.body["cssdata"] = "";
+    request.body["jsdata"] = "";
     db.collection('users').insertOne(request.body);
     response.render('index.hbs', {
         success_register: 'Thank You for Registering!'
@@ -82,7 +83,7 @@ app.post('/login', (request, response) => {
             // console.log(ssn.password);
 
             db.collection('users').find({username: ssn.username}).toArray((err, items) => {
-                console.log(items);
+                //console.log(items);
                 data = items[0]["phone"];
                 // console.log(data);
 
@@ -116,7 +117,7 @@ app.post('/step2', function(req, res) {
         }
         else{
             //Request succeeds
-            console.log(response);
+           // console.log(response);
             res.render(`step2.hbs`,{
                 id: response.id,
                 // username: user_name
@@ -172,9 +173,11 @@ app.get('/code', (request, response) => {
 
     }else {
         db.collection('users').find({username: ssn.username}).toArray((err, items) => {
-            console.log(items);
+            //console.log(items);
             data = items[0]["data"];
             cssdata = items[0]["cssdata"];
+            jsdata = items[0]["jsdata"];
+
             response.render('code.hbs', {
                 title: 'Code Page',
                 header: "This is about me!",
@@ -190,19 +193,21 @@ app.get('/code', (request, response) => {
 app.post('/code-save', (request, response) => {
     var db = utils.getDb();
 
-
     username = request.body.username;
-    console.log(username);
+    //console.log(username);
 
     data = request.body.data;
     cssdata = request.body.cssdata;
 
-    console.log(data);
+    //console.log(data);
 
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'data': data}}, (err, item) => {
         //console.log(data)
     });
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'cssdata': cssdata}}, (err, item) => {
+        //console.log(item)
+    });
+    db.collection('users').findOneAndUpdate({username: username}, {'$set': {'jsdata': jsdata}}, (err, item) => {
         //console.log(item)
     });
 
@@ -212,7 +217,8 @@ app.post('/code-save', (request, response) => {
         header: "This is about me!",
         username: ssn.username,
         data: data,
-        cssdata:cssdata
+        cssdata:cssdata,
+        jsdata: jsdata,
     });
 });
 
@@ -234,6 +240,22 @@ app.post('/test-save', (request, response) => {
 app.get('/test' , (request, response) => {
     response.render('test.hbs')
 });
+
+app.get("*", (request, response) => {
+    response.status(400);
+    response.render("404.hbs", {
+    });
+});
+
+app.get('/logout', (request, response) => {
+    javascript:void(0);
+    request.logout();
+    request.session.destroy(() => {
+        response.clearCookie('connect.sid');
+        response.redirect('/');
+    });
+});
+
 
 
 app.listen(port, () => {

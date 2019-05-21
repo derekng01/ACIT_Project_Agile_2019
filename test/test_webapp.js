@@ -17,11 +17,13 @@ function wait(ms){
 
 //-----------------------------Testers-----------------------------------//
 
-//Testing Broken URL
+//Testing Broken URL - should render the 404hbs and return 400
 describe('GET /12345', function () {
+    after(function (done) {
+        done();
+    });
     //timeout line
     this.timeout(10000);
-
     it("Should return '404' ", function (done) {
         //timeout line
         wait(3000)
@@ -29,7 +31,7 @@ describe('GET /12345', function () {
         chai.request(app)
             .get('/12345')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(400);
                 done()
             });
     });
@@ -62,13 +64,51 @@ describe('GET /code', function () {
     });
 });
 
+
+
+var agent = chai.request.agent(app);
+
+describe('Test Bad account creation', function () {
+
+    after(function (done) {
+        done();
+    });
+
+    it('Should create account', function (done) {
+        agent
+            .post('/register')
+            .type('form')
+            .send({username: 'test',email: 'test@test', password: 'test'})
+            .then(function (res) {
+                // console.log(res)
+
+                var str = res.text;
+                var patt= /Thank You For Registering!/i;
+                var resu = patt.test(str);
+                assert.equal(resu,true);
+
+                //console.log(res.text)
+                // expect(res).to.have.status(200);
+                //   done()
+                done()
+
+            });
+    })
+})
+
+
+
 //Testing Code-Save renders
 describe('POST /code-save', function () {
+    after(function (done) {
+        done();
+    });
+
     it("Should return 'Code-Save Page' ", function (done) {
-        chai.request(app)
+        agent
             .post('/code-save')
             .end(function(err, res) {
-                console.log(res.text);
+                //console.log(res.text);
                 expect(res).to.have.status(200);
                 done()
 
@@ -76,9 +116,11 @@ describe('POST /code-save', function () {
     });
 });
 
-var agent = chai.request.agent(app);
-
 describe('Test account creation', function () {
+    after(function (done) {
+        done();
+    });
+
     it('Should create account', function (done) {
         agent
             .post('/register')
@@ -100,4 +142,3 @@ describe('Test account creation', function () {
             });
     })
 })
-

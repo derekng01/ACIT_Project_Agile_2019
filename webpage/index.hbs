@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -78,8 +79,14 @@
                 </div>
             </div>
         </div>
+        <a href="#" data-toggle="tooltip" class="homett" data-placement="bottom" title="DESKCODE is an in browser HTML/CSS/Javascript editor. It allows user to edit their webpage on the go, on any device.">What is DESKCODE?</a>
     </div>
     {{> footer}}
 </body>
 <script src="js/strong_psw.js"></script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </html>
