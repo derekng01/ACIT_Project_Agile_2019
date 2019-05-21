@@ -1,15 +1,17 @@
-function chk_auto(){
+function chk_auto() {
     var auto_rend = document.getElementById("autorend").checked;
 
-    if(auto_rend === true){
+    if (auto_rend === true) {
         document.getElementById("manrend").disabled = true;
-    }
-    else{
+        document.getElementById("rend_tool").title = 'Toggle this function off to stop the web-page from refreshing/rendering as you type.';
+        $('#rend_tool').tooltip().attr('data-original-title', 'Toggle this function off to stop the web-page from refreshing/rendering as you type.');
+    } else {
         document.getElementById("manrend").disabled = false;
+        document.getElementById("rend_tool").title = 'Toggle this function on to allow the web-page to refresh/render as you type.';
+        $('#rend_tool').tooltip().attr('data-original-title', 'Toggle this function on to allow the web-page to refresh/render as you type.');
     }
     return auto_rend;
 }
-
 
 function get_input(user_in) {
     if (user_in === true) {
@@ -22,10 +24,21 @@ function get_input(user_in) {
 function display_output(user_code,user_in) {
     if (user_in === true) {
         var cssstuff = document.getElementById('input2').value;
-        var code = '<style>' + cssstuff + '</style>' + user_code;
+        var jsstuff = document.getElementById('input3').value;
+        var code = '<style>' + cssstuff + '</style>' + user_code + '<script>' + jsstuff + '</script>';
         document.getElementById('output').srcdoc = code
     }
 }
+
+
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+
+
+
 
 
 // function isPrime(number)
@@ -51,6 +64,6 @@ function display_output(user_code,user_in) {
 
 module.exports = {
     display_output,
-    get_input
+    get_input}
+
     // isPrime
-};

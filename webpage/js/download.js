@@ -3,6 +3,8 @@ function downloadfiles(type,data){
         download('deskcode.html', downloadbtn(type,data))
     }else if(type ==='css'){
         download('deskcode.css',downloadbtn(type,data))
+    }else if(type ==='js'){
+        download('deskcode.js',downloadbtn(type,data))
     }
 }
 
@@ -19,12 +21,16 @@ function downloadbtn(type, data){
             "</head>\n" +
             "<body>\n";
         var end = "\n</body>\n" +
+            "<script src=\"deskcode.js\"></script>"+
             "</html>";
         var htmldata = head + data + end;
-        return(htmldata)
+        download('deskcode.html',htmldata)
     }
     else if(type === 'css'){
-        return(data)
+        download('deskcode.css',data)
+    }
+    else if(type === 'js'){
+        download('deskcode.js',data)
     }
 }
 

@@ -45,6 +45,7 @@ app.post('/register', function (request, response) {
     var db = utils.getDb();
     request.body["data"] = "";
     request.body["cssdata"] = "";
+    request.body["jsdata"] = "";
     db.collection('users').insertOne(request.body);
     response.render('index.hbs', {
         success_register: 'Thank You for Registering!'
@@ -65,6 +66,7 @@ app.post('/login', (request, response) => {
                 console.log(items);
                 data = items[0]["data"];
                 cssdata = items[0]["cssdata"];
+                jsdata = items[0]["jsdata"];
 
                 response.render('code.hbs', {
                     title: 'Code Page',
@@ -96,13 +98,15 @@ app.get('/code', (request, response) => {
             //console.log(items);
             data = items[0]["data"];
             cssdata = items[0]["cssdata"];
+            jsdata = items[0]["jsdata"];
 
             response.render('code.hbs', {
                 title: 'Code Page',
                 header: "This is about me!",
                 username: ssn.username,
                 data: data,
-                cssdata:cssdata
+                cssdata:cssdata,
+                jsdata: jsdata,
             });
         });
     }
@@ -127,13 +131,17 @@ app.post('/code-save', (request, response) => {
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'cssdata': cssdata}}, (err, item) => {
         //console.log(item)
     });
+    db.collection('users').findOneAndUpdate({username: username}, {'$set': {'jsdata': jsdata}}, (err, item) => {
+        //console.log(item)
+    });
     response.render('code.hbs', {
         title: 'Code Page',
         success: "File Has Been Saved",
         header: "This is about me!",
         username: ssn.username,
         data: data,
-        cssdata:cssdata
+        cssdata:cssdata,
+        jsdata: jsdata,
     });
 });
 

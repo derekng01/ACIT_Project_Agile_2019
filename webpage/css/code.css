@@ -138,6 +138,14 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+.tooltip-inner {
+    max-width: 300px;
+}
+
+.rend_tool, .rend_tool:hover, .rend_tool:focus {
+    color: antiquewhite;
+    font-weight: bold;
+}
 
 
 /*@import url("https://fonts.googleapis.com/css?family=Indie+Flower|Monoton|Orbitron|Permanent+Marker|Raleway|Teko");*/

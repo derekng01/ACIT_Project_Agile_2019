@@ -3,7 +3,6 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const utils = require('./utils.js');
 var session = require('express-session');
-const MongoClient = require('mongodb').MongoClient;
 
 var exphbs = require('express-handlebars');
 
@@ -57,6 +56,7 @@ app.post('/register', function (request, response) {
     var db = utils.getDb();
     request.body["data"] = "";
     request.body["cssdata"] = "";
+    request.body["jsdata"] = "";
     db.collection('users').insertOne(request.body);
     response.render('index.hbs', {
         success_register: 'Thank You for Registering!'
@@ -175,6 +175,8 @@ app.get('/code', (request, response) => {
             //console.log(items);
             data = items[0]["data"];
             cssdata = items[0]["cssdata"];
+            jsdata = items[0]["jsdata"];
+
             response.render('code.hbs', {
                 title: 'Code Page',
                 header: "This is about me!",
@@ -204,6 +206,9 @@ app.post('/code-save', (request, response) => {
     db.collection('users').findOneAndUpdate({username: username}, {'$set': {'cssdata': cssdata}}, (err, item) => {
         //console.log(item)
     });
+    db.collection('users').findOneAndUpdate({username: username}, {'$set': {'jsdata': jsdata}}, (err, item) => {
+        //console.log(item)
+    });
 
     response.render('code.hbs', {
         title: 'Code Page',
@@ -211,7 +216,8 @@ app.post('/code-save', (request, response) => {
         header: "This is about me!",
         username: ssn.username,
         data: data,
-        cssdata:cssdata
+        cssdata:cssdata,
+        jsdata: jsdata,
     });
 });
 
@@ -234,7 +240,11 @@ app.get('/test' , (request, response) => {
     response.render('test.hbs')
 });
 
-
+app.get("*", (request, response) => {
+    response.status(400);
+    response.render("404.hbs", {
+    });
+});
 
 app.get('/logout', (request, response) => {
     javascript:void(0);
