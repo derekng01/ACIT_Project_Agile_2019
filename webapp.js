@@ -12,14 +12,14 @@ var messagebird = require('messagebird')('z98qoGoJTwAXOqgr3dHhVbaEM');
 
 var app = express();
 
-const port = process.env.PORT;
+const port = process.env.PORT||8080;
 
 
 // Cookie Code
 // Ignore this line underneath I just copied it from a website LOL
 app.use(session({secret: 'XASDASDA'}));
 var ssn ;
-// Cookie Code
+// Cookie Code;
 
 
 app.use(bodyParser.json());
