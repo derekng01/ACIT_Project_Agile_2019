@@ -3,11 +3,11 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const utils = require('./utils.js');
 var session = require('express-session');
-
 var exphbs = require('express-handlebars');
 
-//CHANGE THE SECOND BRACKET WITH A NEW API KEY WHEN THINGS BREAK
+//Insert MessageBird API Key in the bracket    ↓↓↓↓↓ HERE ↓↓↓↓↓
 var messagebird = require('messagebird')('z98qoGoJTwAXOqgr3dHhVbaEM');
+//Insert MessageBird API Key in the bracket    ↑↑↑↑↑ HERE ↑↑↑↑↑
 
 var app = express();
 
@@ -42,6 +42,7 @@ app.use(express.static(__dirname + '/webpage'));
 
 // --------------- index page  --------------- //
 app.get('/', (request, response) => {
+
     ssn=request.session;
     ssn.username = undefined;
     ssn.verification = 0;

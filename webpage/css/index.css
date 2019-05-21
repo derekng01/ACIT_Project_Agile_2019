@@ -85,6 +85,10 @@ footer{
   color: antiquewhite;
   font-weight: bold;
 }
+
+.gohome, .gohome:hover, .gohome:focus{
+  color:white;
+}
 /*
 * {
   -webkit-box-sizing: border-box;

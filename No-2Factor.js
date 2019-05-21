@@ -175,7 +175,7 @@ app.get('/logout', (request, response) => {
     request.logout();
     request.session.destroy(() => {
         response.clearCookie('connect.sid');
-        response.redirect('/');
+        response.redirect('');
     });
 });
 
