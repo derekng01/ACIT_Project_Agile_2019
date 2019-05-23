@@ -21,7 +21,6 @@ app.use(session({secret: 'XASDASDA'}));
 var ssn ;
 // Cookie Code
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
@@ -38,9 +37,7 @@ app.set('view engine', 'hbs');
 // Web Pages
 app.use(express.static(__dirname + '/webpage'));
 
-
-
-// --------------- index page  --------------- //
+// --------------- Home Page  --------------- //
 app.get('/', (request, response) => {
 
     ssn=request.session;
@@ -53,6 +50,8 @@ app.get('/', (request, response) => {
      ssn.comport;
      ssn.command;
 });
+
+//------------Registration Form-------------//
 app.post('/register', function (request, response) {
     var db = utils.getDb();
     request.body["data"] = "";
@@ -96,8 +95,7 @@ app.post('/login', (request, response) => {
     });
 });
 
-// --------------- index page  --------------- //
-
+//-------------Step 2 for Verification--------------------//
 // Handle phone number submission
 app.post('/step2', function(req, res) {
     var number = req.body.number;
@@ -126,8 +124,7 @@ app.post('/step2', function(req, res) {
     })
 });
 
-// //Verify whether the token is correct
-
+//-------------Step 3 for Verification--------------------//
 app.post('/step3', function(req, res) {
     var id = req.body.id;
     var token = req.body.token;
@@ -135,7 +132,7 @@ app.post('/step3', function(req, res) {
 
 //     //Make request to verify API
     messagebird.verify.verify(id, token, function(err, response ) {
-        console.log(response);
+        //console.log(response);
         if((err)) {
             //Verification has failed
             res.render('step1.hbs', {
@@ -160,7 +157,7 @@ app.post('/step3', function(req, res) {
 
 
 
-// --------------- code page  --------------- //
+// --------------- Code Page --------------- //
 app.get('/code', (request, response) => {
     var db = utils.getDb();
     if (ssn.username === undefined ) {
@@ -189,7 +186,7 @@ app.get('/code', (request, response) => {
         });
     }
 });
-
+//--------Code page which saves the data ----------//
 app.post('/code-save', (request, response) => {
     var db = utils.getDb();
 
@@ -222,7 +219,6 @@ app.post('/code-save', (request, response) => {
     });
 });
 
-// --------------- code page  --------------- //
 const fs = require("fs");
 
 app.post('/test-save', (request, response) => {
@@ -256,14 +252,9 @@ app.get('/logout', (request, response) => {
     });
 });
 
-
-
 app.listen(port, () => {
     console.log('Server is up and running');
     utils.init()
 });
-
-
-
 
 module.exports = app;

@@ -63,7 +63,7 @@ app.post('/login', (request, response) => {
             ssn.username=request.body.username;
             ssn.password=request.body.password;
             db.collection('users').find({username: ssn.username}).toArray((err, items) => {
-                console.log(items);
+                //console.log(items);
                 data = items[0]["data"];
                 cssdata = items[0]["cssdata"];
                 jsdata = items[0]["jsdata"];

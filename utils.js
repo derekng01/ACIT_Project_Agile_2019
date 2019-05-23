@@ -1,13 +1,12 @@
 const MongoClient = require('mongodb').MongoClient;
-                //↓↓↓↓↓ HERE ↓↓↓↓↓ Insert MongoDB API Key in the quotations
-    const db_uri = ""
-                //↑↑↑↑↑ HERE ↑↑↑↑↑ Insert MessageBird API Key in the quotations
+                //Insert MongoDB Atlas Key ↓↓↓↓↓ HERE ↓↓↓↓↓
+    const db_uri = "mongodb+srv://nodeagilefinal:nodeagilefinal@codedatabase-vvcrh.mongodb.net/CodeDatabase"
+                //Insert MongoDB Atlas Key ↑↑↑↑↑ HERE ↑↑↑↑↑
 var _db = null;
 
 module.exports.getDb = () => {
     return _db;
 };
-
 
 
 module.exports.init = function() {
