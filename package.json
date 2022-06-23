@@ -20,7 +20,7 @@
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "hbs": "^4.0.4",
-    "jsdom": "^15.0.0",
+    "jsdom": "^16.5.0",
     "messagebird": "^2.4.1",
     "mocha": "^6.1.4",
     "mochai": "^0.2.5",
